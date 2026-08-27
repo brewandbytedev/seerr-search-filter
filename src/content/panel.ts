@@ -562,6 +562,17 @@ function buildUi(engine: FilterEngine) {
   // Starts hidden; ensureToolbarsInserted reveals it shortly after
   // insertion, once the page has had a moment to settle (see there).
   host.style.visibility = 'hidden';
+  // Seerr's person-page header has a decorative backdrop layer
+  // (position: absolute, ~448px tall, crossfading) sized for the header
+  // area. On a page with a short bio, "Appearances" — and this toolbar —
+  // can end up rendered inside that same vertical span. Per CSS stacking
+  // rules, a positioned element always paints above normal-flow content
+  // regardless of DOM order, so a plain `position: static` toolbar there
+  // would lose to the backdrop mid-fade even though it comes later in the
+  // DOM. Making the toolbar positioned too — with a z-index — puts it in
+  // that same stacking layer, where later DOM order (ours) wins.
+  host.style.position = 'relative';
+  host.style.zIndex = '1';
 
   const shadow = host.attachShadow({ mode: 'open' });
   const style = document.createElement('style');
