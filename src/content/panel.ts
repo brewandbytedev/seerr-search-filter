@@ -234,6 +234,13 @@ class FilterEngine {
     const ui = buildUi(this);
     this.uis.push(ui);
     grid.parentElement.insertBefore(ui.host, grid);
+    // The toolbar is built and laid out correctly from the start, but on a
+    // still-settling page (fonts/images/layout not finished) it can paint
+    // for a moment before that settles, visibly wrapping oddly before
+    // snapping into place. ui.host starts hidden (see buildUi) — reveal it
+    // once, shortly after insertion, so it only ever paints in its final,
+    // stable layout.
+    window.setTimeout(() => ui.reveal(), 350);
   }
 
   private startObservingCards(): void {
@@ -552,6 +559,9 @@ function buildUi(engine: FilterEngine) {
   // ensureToolbarInserted), not fixed/floating.
   const host = document.createElement('div');
   host.id = 'seerr-search-filter-root';
+  // Starts hidden; ensureToolbarsInserted reveals it shortly after
+  // insertion, once the page has had a moment to settle (see there).
+  host.style.visibility = 'hidden';
 
   const shadow = host.attachShadow({ mode: 'open' });
   const style = document.createElement('style');
@@ -869,6 +879,9 @@ function buildUi(engine: FilterEngine) {
     },
     refreshFacetOptions,
     applyState,
+    reveal() {
+      host.style.visibility = '';
+    },
   };
 }
 
