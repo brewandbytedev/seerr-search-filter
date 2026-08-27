@@ -1,12 +1,20 @@
-# Chrome Web Store — submission field values
+# Chrome Web Store — submission guide
 
-Everything needed to fill out the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole) listing for **Seerr Search Filter**. Field names/layout shift a little between dashboard versions — match by purpose, not exact label.
+Everything needed to submit **Seerr Search Filter** through the [Chrome Web Store Developer Dashboard](https://chrome.google.com/webstore/devconsole/31dbe66c-7dae-43ab-972a-54fdcc75a0dc), as the **Brew and Byte Development** publisher. Field names/layout shift a little between dashboard versions — match by purpose, not exact label. Everything referenced below lives in this `store-assets/` folder unless noted.
 
-## Package
+## Before you start
 
-Upload `seerr-search-filter-1.0.0.zip` (built from `dist/`, see main `README.md`).
+Make sure you're signed into the **Brew and Byte Development** Google account in whichever browser you use for this — the dashboard link above is scoped to that publisher's account.
 
-## Store listing
+## 1. Package tab
+
+Upload:
+```
+store-assets/seerr-search-filter-1.0.0.zip
+```
+(Built from `dist/` — see the main `README.md` if you need to rebuild it. Contains `manifest.json`, `background.js`, `content/`, `options/`, and `icons/`; no source maps.)
+
+## 2. Store listing tab
 
 **Product name**
 ```
@@ -61,24 +69,28 @@ Productivity
 English (United States)
 ```
 
-**Icon** (128×128 PNG)
+**Icon** (128×128 PNG — also used at 512×512 for the listing itself)
 ```
 icons/icon128.png
+store-assets/icon512.png
 ```
+Design: Seerr's own brand mark (pulled directly from the live instance's `logo_full.svg`, so it's pixel-accurate to the real logo) sits inside a magnifying-glass frame, with a small dark badge of filter sliders layered on top to distinguish this from a plain "search Seerr" icon — see `icons/icon.svg` for the source.
 
-## Screenshots
+**Screenshots** (1280×800, PNG, no alpha channel — already sized correctly)
+```
+store-assets/screenshots/01-search-star-wars.png
+store-assets/screenshots/02-person-mark-hamill.png
+store-assets/screenshots/03-settings.png
+```
+1. Search results for "Star Wars" with the Movies filter active (44 / 79 shown) — the search-page toolbar in action.
+2. Mark Hamill's filmography page with the Genre filter active (190 / 385 shown) — the person-page toolbar, showing his voice-acting/animation roles.
+3. The settings page for adding a Seerr instance (shown with a placeholder URL, `192.168.1.42`, not a real address).
 
-1280×800 or 640×400 PNG/JPEG, up to 5, no alpha channel. See `store-assets/screenshots/`:
+**Promotional images** (optional, only needed if you want the listing eligible to be featured)
 
-1. `01-search-star-wars.png` — search results for "Star Wars" with the Movies filter active (30 / 60 shown).
-2. `02-person-mark-hamill.png` — Mark Hamill's filmography page with the toolbar filtering both Appearances and Crew.
-3. `03-settings.png` — the options page for adding a Seerr instance.
+Not included. Small tile is 440×280, marquee is 1400×560 — generate later if you want them.
 
-## Promotional images (optional)
-
-Not included — add later if you want the listing featured. Small tile is 440×280, marquee is 1400×560.
-
-## Privacy practices tab
+## 3. Privacy practices tab
 
 **Single purpose description**
 ```
@@ -116,16 +128,28 @@ No — all JavaScript ships inside the extension package; nothing is loaded
 or evaluated from a remote server.
 ```
 
-**Data usage**
+**Data usage disclosures**
 
-None of the listed data categories are collected or transmitted. The extension reads the current page's already-loaded content locally (to decide which result cards to show or hide) and reads/writes its own settings (the list of Seerr URLs) to `chrome.storage.sync` — nothing leaves the browser, and nothing is sold or used for advertising.
+None of the listed data categories are collected or transmitted. The extension reads the current page's already-loaded content locally (to decide which result cards to show or hide) and reads/writes its own settings (the list of Seerr URLs) to `chrome.storage.sync` — nothing leaves the browser, nothing is sold, nothing is used for advertising or tracking.
 
-If the dashboard requires a hosted privacy policy URL, publish `store-assets/PRIVACY_POLICY.md` (plain text is fine) somewhere public — e.g. raw.githubusercontent.com — and link it here.
+**Privacy policy URL**
 
-## Distribution tab
+If the dashboard requires one (likely, since host permissions are requested), publish `store-assets/PRIVACY_POLICY.md` somewhere public and link it — the simplest option, since this repo is already on GitHub, is the raw file URL:
+```
+https://raw.githubusercontent.com/brewandbytedev/seerr-search-filter/main/store-assets/PRIVACY_POLICY.md
+```
+(Only works once the repo — or at least that file — is public. If you'd rather keep the repo private, host the same text anywhere else public, e.g. a GitHub Gist or a page on your own site.)
+
+## 4. Distribution tab
 
 **Visibility**: Unlisted (installable via direct link, not shown in Chrome Web Store search — recommended for a personal/niche tool; switch to Public if you want it discoverable)
 
 **Pricing**: Free
 
 **Regions**: All regions (default)
+
+**Developer/publisher shown on listing**: Brew and Byte Development — footer of the extension's own options page links to https://github.com/brewandbytedev to match.
+
+## After submitting
+
+Chrome Web Store review for a new item is typically same-day to a few days. You'll get an email at the account's registered address either way (approved, or with specific rejection reasons to address).
