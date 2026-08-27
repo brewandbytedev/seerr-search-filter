@@ -20,3 +20,4 @@ npm-debug.log*
 # Env files (none used yet, but don't want them committed if added later)
 .env
 .env.local
+store-assets/
