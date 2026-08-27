@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Seerr Search Filter Privacy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #f6f5f2;
+    --surface: #ffffff;
+    --border: #e4e1d8;
+    --text: #211f1a;
+    --text-dim: #5c584e;
+    --accent: #5147d6;
+    --accent-soft: #edeafc;
+    --code-bg: #efece3;
+    --font-display: "Sora", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Source Serif 4", Georgia, "Times New Roman", serif;
+    --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #17151f;
+      --surface: #1e1c29;
+      --border: #322f42;
+      --text: #ece9f5;
+      --text-dim: #a9a4bd;
+      --accent: #b3a9ff;
+      --accent-soft: #29253d;
+      --code-bg: #26233533;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #17151f;
+    --surface: #1e1c29;
+    --border: #322f42;
+    --text: #ece9f5;
+    --text-dim: #a9a4bd;
+    --accent: #b3a9ff;
+    --accent-soft: #29253d;
+    --code-bg: #262335;
+  }
+
+  * { box-sizing: border-box; }
+  html, body { margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-body);
+    font-size: 18px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .wrap {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 72px 24px 120px;
+  }
+
+  .eyebrow {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: var(--font-display);
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 20px;
+  }
+  .eyebrow svg { width: 22px; height: 22px; flex: none; }
+
+  h1 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 42px);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.01em;
+    margin: 0 0 10px;
+    text-wrap: balance;
+    color: var(--text);
+  }
+
+  .meta {
+    font-family: var(--font-display);
+    font-size: 14px;
+    color: var(--text-dim);
+    margin: 0 0 48px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  h2 {
+    font-family: var(--font-display);
+    font-size: 21px;
+    font-weight: 700;
+    letter-spacing: -0.005em;
+    margin: 52px 0 14px;
+    color: var(--text);
+  }
+  section:first-of-type h2 { margin-top: 0; }
+
+  p { margin: 0 0 16px; max-width: 62ch; color: var(--text); }
+  p.dim { color: var(--text-dim); }
+
+  ul { margin: 0 0 16px; padding-left: 1.3em; max-width: 62ch; }
+  li { margin: 0 0 8px; }
+  li::marker { color: var(--accent); }
+
+  code {
+    font-family: var(--font-mono);
+    font-size: 0.87em;
+    background: var(--code-bg);
+    padding: 0.1em 0.4em;
+    border-radius: 4px;
+  }
+
+  .callout {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 8px;
+    padding: 18px 22px;
+    margin: 24px 0 32px;
+  }
+  .callout p { margin: 0; color: var(--text); }
+  .callout p + p { margin-top: 10px; }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: var(--font-display);
+    font-size: 14.5px;
+    margin: 8px 0 28px;
+  }
+  th, td {
+    text-align: left;
+    padding: 10px 14px 10px 0;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  th {
+    color: var(--text-dim);
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+  td:first-child, th:first-child { color: var(--text); font-weight: 600; white-space: nowrap; padding-right: 20px; }
+
+  .table-scroll { overflow-x: auto; }
+
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--border);
+    font-family: var(--font-display);
+    font-size: 13px;
+    color: var(--text-dim);
+  }
+
+  a { color: var(--accent); }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="eyebrow">
+    <svg viewBox="0 0 128 128" xmlns="http://www.w3.org/2000/svg">
+      <line x1="86" y1="86" x2="106" y2="106" stroke="currentColor" stroke-width="15" stroke-linecap="round"/>
+      <circle cx="54" cy="54" r="41" fill="none" stroke="currentColor" stroke-width="9"/>
+      <g stroke="currentColor" stroke-width="6" stroke-linecap="round">
+        <line x1="38" y1="45" x2="70" y2="45"/>
+        <circle cx="60" cy="45" r="5" fill="currentColor" stroke="none"/>
+        <line x1="38" y1="58" x2="70" y2="58"/>
+        <circle cx="48" cy="58" r="5" fill="currentColor" stroke="none"/>
+      </g>
+    </svg>
+    Seerr Search Filter
+  </div>
+
+  <h1>Privacy Policy</h1>
+  <p class="meta">Last updated August 27, 2026</p>
+
+  <section>
+    <h2>The short version</h2>
+    <div class="callout">
+      <p>This extension does not collect, transmit, or sell any of your data to its developer or to any third party. The only server it ever talks to is the one Seerr instance you configure yourself — and only to read data your own Seerr already loaded, or a small amount of additional data needed to support a filter you turned on.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>What the extension stores</h2>
+    <p>One thing: the list of Seerr instance URLs you add on the extension's Options page.</p>
+    <div class="table-scroll">
+      <table>
+        <tr><th>Value</th><th>Purpose</th><th>Where it lives</th></tr>
+        <tr><td>Seerr instance URL(s)</td><td>Tells the extension which site(s) to activate the filter toolbar on</td><td><code>chrome.storage.sync</code></td></tr>
+      </table>
+    </div>
+    <p class="dim">Stored via Chrome's own <code>chrome.storage.sync</code> API — which may sync across your own signed-in Chrome browsers, the same as any other extension setting, but is never sent to the extension's developer or any third party.</p>
+  </section>
+
+  <section>
+    <h2>What the extension reads and fetches</h2>
+    <p>On a Seerr search-results page or a person's filmography page you've added, the extension:</p>
+    <ul>
+      <li>Reads the page's own already-loaded content locally, in your browser, to decide which result cards match your filters and should be shown or hidden. This never leaves your device.</li>
+      <li>Fetches a small amount of additional data <strong>directly from that same Seerr instance</strong> — genre names, and (only for filters that need it, like content rating or actor name) per-title cast and rating details — using your existing logged-in session, exactly as if Seerr's own page had requested it.</li>
+    </ul>
+    <p>Every one of those requests goes to the single Seerr origin you explicitly added. Nothing is ever sent to the extension's developer, to an analytics service, or to any other server.</p>
+  </section>
+
+  <section>
+    <h2>Page access</h2>
+    <p>The extension's content scripts only run on the exact Seerr instance origin(s) you add on the Options page, and only on their <code>/search</code> and <code>/person/*</code> pages — never on other websites, and never broadly. Chrome shows you its own permission prompt for that site before it can run.</p>
+  </section>
+
+  <section>
+    <h2>Your control</h2>
+    <ul>
+      <li>Removing a Seerr URL on the Options page stops the toolbar from running there and revokes the extension's access to that site.</li>
+      <li>Uninstalling the extension removes all locally stored settings with it.</li>
+      <li>You can review or revoke the extension's site access at any time from Chrome's own extension settings.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Changes to this policy</h2>
+    <p>If this policy changes, the "Last updated" date above will change with it. Material changes will also be reflected in the Chrome Web Store listing.</p>
+  </section>
+
+  <footer>
+    Seerr Search Filter is an independent, unofficial companion extension. It is not made by, affiliated with, or endorsed by the Seerr project.
+  </footer>
+</div>
+</body>
+</html>
