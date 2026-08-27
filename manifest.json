@@ -1,16 +1,28 @@
 {
   "manifest_version": 3,
   "name": "Seerr Search Filter",
-  "version": "0.1.0",
-  "description": "Adds a client-side filter panel (type, genre, year, rating, language, availability, actor) to Seerr's search results page.",
+  "version": "1.0.0",
+  "description": "Adds a filter toolbar (type, genre, year, score, language, availability, content rating, actor) to Seerr's search results and person pages.",
   "permissions": ["storage", "scripting"],
   "optional_host_permissions": ["*://*/*"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
   "background": {
     "service_worker": "background.js",
     "type": "module"
   },
   "options_page": "options/options.html",
   "action": {
-    "default_title": "Seerr Search Filter — click to configure your instance URL"
+    "default_title": "Seerr Search Filter — click to configure your instance URL",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
   }
 }

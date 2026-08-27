@@ -37,6 +37,7 @@ function copyStaticFiles() {
   mkdirSync('dist/options', { recursive: true });
   cpSync('src/options/options.html', 'dist/options/options.html');
   cpSync('src/options/options.css', 'dist/options/options.css');
+  cpSync('icons', 'dist/icons', { recursive: true, filter: (src) => !src.endsWith('.svg') });
 }
 
 if (watch) {
