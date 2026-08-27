@@ -1,0 +1,22 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Editor/OS cruft
+.DS_Store
+.vscode/
+.idea/
+*.swp
+
+# TypeScript build info
+*.tsbuildinfo
+
+# Env files (none used yet, but don't want them committed if added later)
+.env
+.env.local

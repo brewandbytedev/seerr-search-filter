@@ -1,0 +1,233 @@
+:root {
+  --bg: #f4f5f8;
+  --card-bg: #ffffff;
+  --text: #1a1d29;
+  --text-muted: #6b7280;
+  --border: #e2e4e9;
+  --accent: #4c6ef5;
+  --accent-hover: #3c58d6;
+  --success-bg: #e8f7ee;
+  --success-text: #1e7d43;
+  --error-bg: #fdecec;
+  --error-text: #c0392b;
+  --danger: #c0392b;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14161f;
+    --card-bg: #1d202c;
+    --text: #eef0f6;
+    --text-muted: #9a9fb0;
+    --border: #2c3040;
+    --accent: #6d87ff;
+    --accent-hover: #8398ff;
+    --success-bg: #123321;
+    --success-text: #5fd996;
+    --error-bg: #3a1418;
+    --error-text: #ff8a8a;
+    --danger: #ff8a8a;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 16px;
+  background: var(--bg);
+  color: var(--text);
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+.card {
+  width: 100%;
+  max-width: 440px;
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+}
+
+h1 {
+  font-size: 20px;
+  margin: 0 0 4px;
+}
+
+.subtitle {
+  margin: 0 0 24px;
+  color: var(--text-muted);
+  font-size: 14px;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 6px;
+  margin-top: 18px;
+}
+
+input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+}
+
+input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+code {
+  background: var(--bg);
+  border-radius: 4px;
+  padding: 1px 5px;
+  font-size: 12px;
+}
+
+.hint {
+  margin: 6px 0 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 24px;
+}
+
+button {
+  flex: 1;
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+button.primary {
+  background: var(--accent);
+  color: white;
+}
+
+button.primary:hover {
+  background: var(--accent-hover);
+}
+
+button.secondary {
+  background: transparent;
+  border-color: var(--border);
+  color: var(--text);
+}
+
+button.secondary:hover {
+  border-color: var(--accent);
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: default;
+}
+
+.status {
+  margin: 16px 0 0;
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  display: none;
+}
+
+.status.visible {
+  display: block;
+}
+
+.status.success {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.status.error {
+  background: var(--error-bg);
+  color: var(--error-text);
+}
+
+.status.info {
+  background: var(--bg);
+  color: var(--text-muted);
+}
+
+.origin-list {
+  list-style: none;
+  margin: 24px 0 0;
+  padding: 0;
+  border-top: 1px solid var(--border);
+}
+
+.origin-list:empty {
+  border-top: none;
+}
+
+.origin-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 13px;
+}
+
+.origin-list .origin-url {
+  overflow-wrap: anywhere;
+}
+
+.origin-list button {
+  flex: none;
+  padding: 5px 10px;
+  font-size: 12px;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--danger);
+}
+
+.origin-list button:hover {
+  border-color: var(--danger);
+}
+
+.page-footer {
+  width: 100%;
+  max-width: 440px;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.page-footer p {
+  margin: 4px 0;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.page-footer a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.page-footer a:hover {
+  text-decoration: underline;
+}

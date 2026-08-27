@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Seerr Search Filter — Settings</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="card">
+      <header>
+        <h1>Seerr Search Filter</h1>
+        <p class="subtitle">Add the Seerr instances where you want the filter toolbar to appear.</p>
+      </header>
+
+      <form id="add-form">
+        <label for="origin-input">Seerr URL</label>
+        <input
+          id="origin-input"
+          type="text"
+          placeholder="http://192.168.1.10:5055"
+          autocomplete="off"
+          spellcheck="false"
+        />
+        <p class="hint">
+          Include the scheme (http:// or https://) and port if non-standard. Chrome will ask you
+          to grant access to that site — the toolbar only runs on its
+          <code>/search</code> and <code>/person/…</code> pages.
+        </p>
+
+        <div class="actions">
+          <button type="submit" id="add-btn" class="primary">Add instance</button>
+        </div>
+
+        <p id="status-msg" class="status" role="status" aria-live="polite"></p>
+      </form>
+
+      <ul id="origin-list" class="origin-list"></ul>
+    </main>
+
+    <footer class="page-footer">
+      <p class="version">Version <span id="ext-version"></span></p>
+      <p class="credit">
+        Made with ❤️ for
+        <a href="https://github.com/seerr-team/seerr" target="_blank" rel="noopener noreferrer">Seerr</a>
+      </p>
+    </footer>
+
+    <script type="module" src="options.js"></script>
+  </body>
+</html>
