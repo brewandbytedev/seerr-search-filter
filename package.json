@@ -6,7 +6,9 @@
   "type": "module",
   "scripts": {
     "build": "node build.mjs",
-    "watch": "node build.mjs --watch"
+    "watch": "node build.mjs --watch",
+    "typecheck": "tsc -p tsconfig.json",
+    "package": "cd dist && zip -r ../extension.zip . -x '*.DS_Store' && cd .."
   },
   "devDependencies": {
     "@types/chrome": "^0.0.280",
