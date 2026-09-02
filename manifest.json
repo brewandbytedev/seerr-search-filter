@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Seerr Search Filter",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Adds a filter toolbar (type, genre, year, score, language, availability, rating, actor) to Seerr's search and person pages.",
   "permissions": [
     "storage",
