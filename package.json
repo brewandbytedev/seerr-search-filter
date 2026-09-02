@@ -1,6 +1,6 @@
 {
   "name": "seerr-search-filter",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "description": "Chrome extension that adds a client-side filter panel to Seerr's search results page.",
   "type": "module",
