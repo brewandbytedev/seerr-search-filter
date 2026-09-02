@@ -65,9 +65,17 @@ async function addOrigin(origin: string): Promise<void> {
       origins.push(origin);
       await setOrigins(origins);
     }
-    await chrome.runtime.sendMessage({ type: 'seerr-search-filter:add-origin', origin });
+    const res = (await chrome.runtime.sendMessage({
+      type: 'seerr-search-filter:add-origin',
+      origin,
+    })) as { ok: boolean; error?: string } | undefined;
+    if (!res?.ok) {
+      throw new Error(res?.error ?? 'The background script could not register the filter for that site.');
+    }
     render(origins);
     showStatus('success', `Added ${origin}.`);
+  } catch (err) {
+    showStatus('error', `Could not add ${origin}: ${err instanceof Error ? err.message : String(err)}`);
   } finally {
     addBtn.disabled = false;
   }
