@@ -1,5 +1,7 @@
 # Seerr Search Filter
 
+[![Release](https://img.shields.io/github/v/tag/brewandbytedev/seerr-search-filter?filter=v*&sort=semver&label=release)](https://github.com/brewandbytedev/seerr-search-filter/releases)
+
 A Chrome extension (Manifest V3) that adds a filter toolbar to
 [Seerr](https://github.com/seerr-team/seerr)'s search results page and to a
 person's filmography page — filter by media type, genre, year, score,
